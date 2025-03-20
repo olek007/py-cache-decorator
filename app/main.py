@@ -1,6 +1,8 @@
 from functools import wraps
 from typing import Callable, Any
 
+_cached_funcs = {}
+
 
 def cache(func: Callable) -> Callable:
     """
@@ -16,7 +18,6 @@ def cache(func: Callable) -> Callable:
         :return: The wrapped function with caching capability.
         :rtype: Callable
     """
-    _cached_funcs = {}
 
     @wraps(func)
     def wrapper(*args) -> Any:
